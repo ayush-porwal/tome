@@ -1,0 +1,23 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+node_modules
+.wxt
+.output
+stats.html
+stats-*.json
+web-ext.config.ts
+
+# Editor directories and files
+*.sln
+*.sw?
+.idea
+*.suo
+*.ntvs*
+.vscode/*
+*.njsproj
+.DS_Store
+!.vscode/extensions.json
