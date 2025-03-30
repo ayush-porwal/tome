@@ -7,5 +7,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
   }),
   extensionApi: "chrome",
+  manifest: {
+    permissions: ["tabs", "storage", "identity"],
+  },
   modules: ["@wxt-dev/module-react"],
 });
