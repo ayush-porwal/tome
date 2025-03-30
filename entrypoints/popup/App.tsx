@@ -14,8 +14,9 @@ function App() {
     initialize();
   }, []);
 
-  const handleCreateCollection = () => {
-    StorageService.createCollection("Something");
+  const handleCreateCollection = async () => {
+    await StorageService.createCollection("Something");
+    initialize();
   };
 
   const handleAddResource = async (id: string) => {
@@ -23,20 +24,32 @@ function App() {
       active: true,
       lastFocusedWindow: true,
     });
-    StorageService.addResource(id, currentTab);
+    await StorageService.addResource(id, currentTab);
+    initialize();
   };
 
   return (
     <>
-      <div className="flex">
-        <h1>Tome</h1>
-        <button onClick={handleCreateCollection}>Create Collection</button>
+      <div className="flex justify-between items-center p-2">
+        <h1 className="text-xl font-bold">Tome</h1>
+        <button
+          onClick={handleCreateCollection}
+          className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
+        >
+          Create Collection
+        </button>
       </div>
-      <ul>
+      <ul className="mt-4 space-y-2 p-2">
         {collections.map((collection) => (
-          <li className="flex justify-between">
+          <li
+            key={collection.id}
+            className="flex justify-between items-center p-2 border rounded"
+          >
             <p>{collection.name}</p>
-            <button onClick={() => handleAddResource(collection.id)}>
+            <button
+              onClick={() => handleAddResource(collection.id)}
+              className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50"
+            >
               Add
             </button>
           </li>
