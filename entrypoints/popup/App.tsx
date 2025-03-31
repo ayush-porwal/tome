@@ -5,6 +5,7 @@ import { StorageService } from "@/services/storage";
 // component imports
 import AddIcon from "@/components/icons/AddIcon";
 import SearchIcon from "@/components/icons/SearchIcon";
+import BookPlusIcon from "@/components/icons/BookPlusIcon";
 import LeftArrowIcon from "@/components/icons/LeftArrowIcon";
 
 // type imports
@@ -56,7 +57,7 @@ function App() {
       : [];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="h-full bg-gray-50">
       {selectedCollection ? (
         <div className="p-4">
           <div className="flex items-center mb-4">
@@ -108,8 +109,8 @@ function App() {
           )}
         </div>
       ) : (
-        <div className="p-4">
-          <div className="flex justify-between items-center mb-6">
+        <div className="flex flex-col gap-4 p-4">
+          <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold text-gray-800">Tome</h1>
             <button
               onClick={handleCreateCollection}
@@ -139,9 +140,11 @@ function App() {
                     </div>
                     <button
                       onClick={() => handleAddResource(collection.id)}
-                      className="ml-2 px-3 py-1.5 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 disabled:opacity-50 shadow-sm transition-colors"
+                      className="p-2 rounded-lg transition-colors focus:outline-none hover:cursor-pointer"
                     >
-                      Add Current Page
+                      <div className="text-blue-600 hover:text-green-800">
+                        <BookPlusIcon />
+                      </div>
                     </button>
                   </div>
                 </li>
